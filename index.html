@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="description" content="Hafiz — Creative Designer & Digital Marketer. Website coming soon." />
+  <title>Hafiz — Live Soon</title>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --text: #f4f1ea;
+      --muted: #8d8a84;
+      --line: rgba(244, 241, 234, 0.13);
+      --accent: #d8ff45;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+        Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .page {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 42px;
+      isolation: isolate;
+    }
+
+    /* Subtle grain */
+    .page::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+
+    .header,
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(216, 255, 69, 0.65);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 0;
+    }
+
+    .hero-inner {
+      width: min(1120px, 100%);
+    }
+
+    .eyebrow {
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: reveal 0.9s ease both;
+    }
+
+    h1 {
+      max-width: 1000px;
+      font-size: clamp(4rem, 10.5vw, 10.5rem);
+      line-height: 0.88;
+      font-weight: 500;
+      letter-spacing: -0.075em;
+      text-wrap: balance;
+      animation: reveal 1s 0.1s ease both;
+    }
+
+    h1 em {
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    .description {
+      max-width: 530px;
+      margin-top: 42px;
+      color: #b7b3ac;
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.55;
+      animation: reveal 1s 0.2s ease both;
+    }
+
+    .launch {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      margin-top: 38px;
+      padding: 15px 20px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      animation: reveal 1s 0.3s ease both;
+    }
+
+    .launch::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      animation: reveal 1s 0.4s ease both;
+    }
+
+    .footer p {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .links {
+      display: flex;
+      gap: 22px;
+    }
+
+    .links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+    }
+
+    .links a:hover {
+      color: var(--text);
+    }
+
+    .orb {
+      position: absolute;
+      width: 34vw;
+      height: 34vw;
+      max-width: 500px;
+      max-height: 500px;
+      right: -13vw;
+      bottom: -18vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(216,255,69,0.09), transparent 68%);
+      filter: blur(10px);
+      z-index: -1;
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(-25px, -18px, 0); }
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 24px 22px;
+      }
+
+      .header {
+        align-items: flex-start;
+      }
+
+      .status {
+        font-size: 9px;
+        letter-spacing: 0.1em;
+      }
+
+      .hero {
+        align-items: center;
+        padding: 70px 0;
+      }
+
+      .eyebrow {
+        margin-bottom: 22px;
+        font-size: 10px;
+      }
+
+      h1 {
+        font-size: clamp(4rem, 20vw, 7rem);
+        letter-spacing: -0.08em;
+      }
+
+      .description {
+        margin-top: 30px;
+        font-size: 16px;
+        max-width: 390px;
+      }
+
+      .launch {
+        margin-top: 30px;
+        padding: 13px 16px;
+      }
+
+      .footer {
+        align-items: flex-end;
+        gap: 18px;
+      }
+
+      .footer p {
+        max-width: 140px;
+        line-height: 1.4;
+        font-size: 9px;
+      }
+
+      .links {
+        gap: 13px;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .links a {
+        font-size: 9px;
+      }
+
+      .orb {
+        width: 75vw;
+        height: 75vw;
+        right: -35vw;
+        bottom: -25vw;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="orb"></div>
+
+    <header class="header">
+      <div class="logo">Hafiz.</div>
+
+      <div class="status">
+        <span class="dot"></span>
+        Building something new
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">iamhaafiz.com</p>
+
+        <h1>
+          Something<br />
+          <em>is coming.</em>
+        </h1>
+
+        <p class="description">
+          My new digital home is currently being built.
+          A place for my work, ideas, projects and everything in between.
+        </p>
+
+        <div class="launch">Website — Live Soon</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Hafiz. All rights reserved.</p>
+
+      <nav class="links" aria-label="Social links">
+        <a href="mailto:hello@iamhaafiz.com">Email</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
